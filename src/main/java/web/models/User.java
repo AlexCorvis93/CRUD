@@ -1,7 +1,8 @@
 package web.models;
 
-
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
@@ -12,12 +13,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotEmpty(message = "Name field is Empty")
+    @Size(min = 2, max = 50, message = "Name should be in range between 2 and 50 characters")
     @Column(name = "name")
     private String name;
 
+
+    @NotEmpty(message = "Lastname field is Empty")
+    @Size(min = 2, max = 50, message = "Lastname should be in range between 2 and 50 characters")
     @Column(name = "lastname")
     private String lastname;
 
+    @Size(min = 2, max = 40, message = "Country should be in range between 2 and 40 characters")
     @Column(name = "country")
     private String country;
 
